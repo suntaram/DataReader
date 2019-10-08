@@ -42,7 +42,7 @@ public class CSVItemReader {
 	            for(Customer csvUser: csvUsers) {
 	            	Long referenceNo=csvUser.getReference();
 	            	if(referenceNo==null && referenceNo.equals("")) {
-	            		ReferenceService.findByName(referenceNo);
+	            			ReferenceService.referenceException(referenceNo);
 	            	}
 	            	else if(RecordFilter.findReference(customerDataList,referenceNo) == null) {
 		            		if(RecordFilter.validateEndBalance(csvUser)){

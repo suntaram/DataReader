@@ -31,7 +31,7 @@ public class XMLItemReader {
                 Customer customer = new Customer();
                 Long referenceNo = xmlcustlist.getReference();
                 if(referenceNo.equals("")||referenceNo==null) {
-                	ReferenceService.findByName(referenceNo);
+                	ReferenceService.referenceException(referenceNo);
                 }
                 customer.setReference(referenceNo);
                 customer.setAccountNumber(xmlcustlist.getAccountNumber());

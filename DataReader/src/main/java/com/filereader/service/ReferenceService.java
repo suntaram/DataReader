@@ -5,18 +5,24 @@ import com.filreader.exception.ReferenceNotFoundException;
 
 public class ReferenceService {
 	
-	 public static void findByName(Long referenceNo) throws ReferenceNotFoundException  {
-
-	        if(referenceNo==null || referenceNo.equals(""))
-	            throw new ReferenceNotFoundException("Reference is empty!");
-	        
-	 }
-	    public static void main(String[] args) {
+		private void handlException() throws ReferenceNotFoundException {
+			
+			try {
+				
+				referenceException(new Long(""));
+			}
+			catch(ReferenceNotFoundException cause) {
+				throw new ReferenceNotFoundException("A message that describes the error.", cause);
+			}
+			
+		}
+	
+	 
+	    public static void referenceException(Long referenceNo) throws ReferenceNotFoundException{
 
 	        try {
-	        	ReferenceService reference=new ReferenceService();
-	        	Customer customer=new Customer();
-	        	reference.findByName(customer.getReference());
+	        	if(referenceNo==null || referenceNo.equals(""))
+		            throw new ReferenceNotFoundException("Reference is empty!", null );
 	        	} 
 	        catch (ReferenceNotFoundException e) {
 	            e.printStackTrace();
