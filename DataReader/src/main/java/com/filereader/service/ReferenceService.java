@@ -11,20 +11,20 @@ public class ReferenceService {
 				
 				referenceException(new Long(""));
 			}
-			catch(ReferenceNotFoundException cause) {
-				throw new ReferenceNotFoundException("A message that describes the error.", cause);
+			catch(ReferenceNotFoundException ex) {
+				ex.printStackTrace();
+				
 			}
 			
 		}
 	
-	 
 	    public static void referenceException(Long referenceNo) throws ReferenceNotFoundException{
 
 	        try {
 	        	if(referenceNo==null || referenceNo.equals(""))
 		            throw new ReferenceNotFoundException("Reference is empty!", null );
 	        	} 
-	        catch (ReferenceNotFoundException e) {
+	        catch (NumberFormatException e) {
 	            e.printStackTrace();
 	        }
 
